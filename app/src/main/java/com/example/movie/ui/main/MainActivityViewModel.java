@@ -62,5 +62,28 @@ public class MainActivityViewModel extends ViewModel {
                 .build();
     }
 
+    /**
+     * Returns LiveData of PagedList of movie
+     */
+    public LiveData<PagedList<Movie>> getMoviePagedList() {
+        return mMoviePagedList;
+    }
 
-}
+    /**
+     * Set the LiveData of PagedList of movie to clear the old list and reload
+     *
+     * @param sortCriteria The sort order of the movies by popular, top rated, now playing,
+     *                     upcoming, and favorites
+     */
+    public void setMoviePagedList(String sortCriteria) {
+        init(sortCriteria);
+    }
+
+    /**
+     * Returns LiveData of the List of MovieEntries
+     */
+    public LiveData<List<MovieEntry>> getFavoriteMovies() {
+        return mFavoriteMovies;
+    }
+
+
