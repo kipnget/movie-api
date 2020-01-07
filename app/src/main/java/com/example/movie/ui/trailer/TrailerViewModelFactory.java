@@ -1,4 +1,4 @@
-package com.example.movie.trailer;
+package com.example.movie.ui.trailer;
 
 
 import androidx.lifecycle.ViewModel;

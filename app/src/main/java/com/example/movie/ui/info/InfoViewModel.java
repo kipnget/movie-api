@@ -1,4 +1,4 @@
-package com.example.movie.info;
+package com.example.movie.ui.info;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
