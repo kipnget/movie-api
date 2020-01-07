@@ -23,7 +23,7 @@ import static com.example.movie.utilities.Constant.LANGUAGE;
 import static com.example.movie.utilities.Constant.PAGE;
 
 /**
- * MovieRepository is responsible for handling data operations in PopularMovies. Acts as a mediator
+ * MovieRepository is responsible for handling data operations in Movies. Acts as a mediator
  * between {@link TheMovieApi} and {@link MovieDao}
  */
 public class MovieRepository {
