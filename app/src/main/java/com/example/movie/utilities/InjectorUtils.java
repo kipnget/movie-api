@@ -1,7 +1,8 @@
-package com.example.movie;
+package com.example.movie.utilities;
 
 import android.content.Context;
 
+import com.example.movie.AppExecutors;
 import com.example.movie.data.MovieDatabase;
 import com.example.movie.data.MovieRepository;
 import com.example.movie.ui.info.InfoViewModelFactory;
