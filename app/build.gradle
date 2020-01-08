@@ -12,11 +12,19 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug{
+            buildConfigField 'String', "API_KEY", '"0fd1ab10145c112074e054c9f3a5bb06"'
+            resValue 'string', "api_key", '"0fd1ab10145c112074e054c9f3a5bb06"'
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', "API_KEY", '"1f54bd990f1cdfb230adb312546d765d"'
+            resValue 'string', "api_key", '"1f54bd990f1cdfb230adb312546d765d"'
         }
     }
+    dataBinding.enabled = true
 }
 
 dependencies {
