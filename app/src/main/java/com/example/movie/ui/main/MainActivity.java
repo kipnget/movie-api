@@ -1,5 +1,6 @@
 package com.example.movie.ui.main;
 
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedList;
@@ -22,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -35,6 +37,7 @@ import com.example.movie.data.MoviePreferences;
 import com.example.movie.databinding.ActivityMainBinding;
 import com.example.movie.model.Movie;
 import com.example.movie.utilities.InjectorUtils;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -75,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements
     /** This field is used for data binding */
     private ActivityMainBinding mMainBinding;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements
 
         // Set the LayoutManager to the RecyclerView and create MoviePagedListAdapter and FavoriteAdapter
         initAdapter();
+
 
         // Check if savedInstance is null not to recreate a dialog when rotating
         if (savedInstanceState == null) {
@@ -136,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements
         // Create FavoriteAdapter that is responsible for linking favorite movies with the Views
         mFavoriteAdapter = new FavoriteAdapter(this, this);
     }
+
 
     /**
      * Get the MainActivityViewModel from the factory
@@ -436,9 +443,20 @@ public class MainActivity extends AppCompatActivity implements
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.action_logout:{
+                logout();
+                return true;
+            }
             default:
                 return super.onOptionsItemSelected(item);
         }
+
+    }
+    private  void logout(){
+        FirebaseAuth.getInstance().signOut();
+        FragmentTransaction ft =getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frame_main, new Login_Fragment());
+        ft.commit();
     }
 
     /**
